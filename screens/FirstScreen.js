@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class FirstScreen extends Component{
   
@@ -18,20 +18,12 @@ export default class FirstScreen extends Component{
 }
 
 const styles = StyleSheet.create({
+    linearGradient: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+        alignItems: 'center' 
+    }
 });

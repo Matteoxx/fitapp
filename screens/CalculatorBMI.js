@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class CalculatorBMI extends Component{
     goToScreen = (screenName) => {
@@ -20,31 +21,27 @@ export default class CalculatorBMI extends Component{
 
     render() {
         return (
-            <View style={styles.container}>
-       
-                    <Text>Liczenie BMI</Text>
-             
-            </View>
+            <LinearGradient colors={['#4facfe','#00f2fe']} style={styles.linearGradient}>
+
+                <View style={styles.container}>
+        
+                        <Text>Liczenie BMI</Text>
+                
+                </View>
+                
+            </LinearGradient>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    linearGradient: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
+        alignItems: 'center' 
     },
     btn: {
         paddingTop: 15,

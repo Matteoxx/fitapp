@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Dimensions, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class TrainingStart extends Component{
     goToScreen = (screenName) => {
@@ -21,33 +21,47 @@ export default class TrainingStart extends Component{
 
     render() {
         return (
-            <View style={styles.container}>
-              
-              <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('Training')}>
-                <Text>Start Training</Text>
-              </TouchableOpacity>
-              
-            </View>
+            <LinearGradient colors={['#4facfe','#00f2fe']} style={styles.linearGradient}>
+
+                <View style={styles.container}>
+                 
+                    <TouchableOpacity  
+                      
+                        style = {{
+                            borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
+                            width: Dimensions.get('window').width * 0.5,
+                            height: Dimensions.get('window').width * 0.5,
+                            borderWidth: 1,
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                        onPress={()=> this.goToScreen('Training')}
+                        >
+
+                        <Text style={styles.btnTxt}>Start Training</Text>
+                    
+                    </TouchableOpacity> 
+
+                    
+                </View>
+
+            </LinearGradient>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    linearGradient: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        alignItems: 'center' 
     },
-    btn: {
-        borderWidth: 1,
-        width: '35%',
-        padding: 5,
-        marginTop: '10%',
-        borderRadius: 5
-      },
     btnTxt: {
-        fontSize: 20,
-        textAlign: 'center'
-    },
+        fontSize: 24,
+        textAlign: 'center',
+        fontFamily: 'Lato-Bold'
+    }
 });

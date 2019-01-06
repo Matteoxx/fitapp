@@ -34,7 +34,7 @@ export default class TrainingHistory extends Component{
                 });
             });
         });
-      }
+    }
     
     componentDidMount() {
         this.downloadDataFromDatabase(db);
@@ -43,14 +43,20 @@ export default class TrainingHistory extends Component{
     _renderRow(rowData){
         return (
           
+            // trzeba zrobic jeszcze nazwy kolumn na samej górze
+            
           <View style={styles.row}>
 
             <View style={styles.col}><Text style={styles.text}>{rowData.date}</Text></View>
             <View style={styles.col}><Text style={styles.text}>{rowData.distance}</Text></View>
-            <View style={styles.col}><Text style={styles.text}>{rowData.minPulse}</Text></View>
-            <View style={styles.col}><Text style={styles.text}>{rowData.maxPulse}</Text></View>
-            <View style={styles.col}><Text style={styles.text}>{rowData.avgPulse}</Text></View>
-            <View style={styles.col}><Text style={styles.text}>{rowData.timescale}</Text></View>
+            <View style={styles.col}><Text style={styles.text}>{rowData.calories}</Text></View>
+            <View style={styles.col}>
+                <Text style={styles.text}>
+                    {rowData.minPulse}/{rowData.avgPulse}/{rowData.maxPulse}
+                </Text>
+            </View>
+
+            <View style={styles.col}><Text style={styles.text}>{rowData.time}</Text></View>
 
 
           </View>   
@@ -69,10 +75,9 @@ export default class TrainingHistory extends Component{
         }
 
         return (
-            <LinearGradient colors={['#fbc2eb','#a6c1ee']} style={styles.linearGradient}>
+            <LinearGradient colors={['#4facfe','#00f2fe']} style={styles.linearGradient}>            
                 <View style={styles.container}>
                     
-                    <Text>Historia Treningowa</Text>
                     <ListView 
                         style={styles.table} 
                         dataSource={this.state.trainings}
@@ -100,6 +105,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        paddingTop: '2%'
       },
       row: {
         flex: 1,
@@ -113,7 +119,7 @@ const styles = StyleSheet.create({
       },
       text: {
         textAlign: 'center',
-        padding: '3%',
+        padding: '2%',
         fontFamily: 'Lato-Regular'
       }
 });

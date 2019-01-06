@@ -40,18 +40,20 @@ export default class App extends Component {
 
     render() {
     return (
-    <LinearGradient colors={['#A6fcd2','#Afd5f6']} style={styles.linearGradient}>
+    // <LinearGradient colors={['#A6fcd2','#Afd5f6']} style={styles.linearGradient}>
+    <LinearGradient colors={['#4facfe','#00f2fe']} style={styles.linearGradient}>
+
 
       <View style={styles.container}>
 
           <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('TrainingHistory')}>
-              <Text>Historia Treningowa</Text>
+              <Text style={styles.btnTxt}>Historia Treningowa</Text>
           </TouchableOpacity>
           <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('TrainingStart')}>
-              <Text>Trening</Text>
+              <Text style={styles.btnTxt}>Trening</Text>
           </TouchableOpacity>
           <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('CalculatorBMI')}>
-              <Text>Liczenie BMI</Text>
+              <Text style={styles.btnTxt}>Liczenie BMI</Text>
           </TouchableOpacity>
 
         </View>
@@ -70,28 +72,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center' 
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
     btn: {
-        paddingTop: 15,
-        paddingBottom: 15,
-        paddingLeft: 5,
-        paddingRight: 5,
-        borderWidth: 4,
-        borderColor: 'black',
-        borderStyle: 'solid',
+        padding: 15,
+        borderWidth: 1,
         width: '95%',
         margin: 10,
-        backgroundColor: 'deepskyblue',
-        alignItems: 'center',
-        borderRadius: 15
+        borderRadius: 15   
+    },
+    btnTxt: {
+        fontSize: 24,
+        fontFamily: 'Lato-Bold',
+        textAlign: 'center' 
     },
 });

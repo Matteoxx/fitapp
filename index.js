@@ -8,7 +8,7 @@ import FirstScreen from './screens/FirstScreen';
 import Result from './screens/Result';
 
 
-Navigation.registerComponent(`App`, () => App);
+Navigation.registerComponent(`HomePage`, () => App);
 Navigation.registerComponent(`TrainingHistory`, () => TrainingHistory);
 Navigation.registerComponent(`TrainingStart`, () => TrainingStart);
 Navigation.registerComponent(`Training`, () => Training);
@@ -34,7 +34,7 @@ Navigation.events().registerAppLaunchedListener(() => {
                         children: [
                             {
                                 component: {
-                                    name: 'App',
+                                    name: 'HomePage',
                                     options: {
                                         topBar: {
                                             title: {
