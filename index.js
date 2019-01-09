@@ -6,6 +6,7 @@ import Training from './screens/Training';
 import CalculatorBMI from './screens/CalculatorBMI';
 import FirstScreen from './screens/FirstScreen';
 import Result from './screens/Result';
+import ResultCalculatorBMI from './screens/ResultCalculatorBMI';
 
 
 Navigation.registerComponent(`HomePage`, () => App);
@@ -15,6 +16,7 @@ Navigation.registerComponent(`Training`, () => Training);
 Navigation.registerComponent(`CalculatorBMI`, () => CalculatorBMI);
 Navigation.registerComponent(`FirstScreen`, () => FirstScreen);
 Navigation.registerComponent(`Result`, () => Result);
+Navigation.registerComponent(`ResultCalculatorBMI`, () => ResultCalculatorBMI);
 
 
 Navigation.events().registerAppLaunchedListener(() => {

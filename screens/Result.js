@@ -50,7 +50,7 @@ export default class Result extends Component{
           });
     
         
-        this.goToScreen('App')
+        this.goToScreen('HomePage')
     }
 
     goToScreen = (screenName) => {
