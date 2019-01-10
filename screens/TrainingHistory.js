@@ -50,12 +50,6 @@ export default class TrainingHistory extends Component{
             <View style={styles.col}><Text style={styles.text}>{rowData.date}</Text></View>
             <View style={styles.col}><Text style={styles.text}>{rowData.distance}</Text></View>
             <View style={styles.col}><Text style={styles.text}>{rowData.calories}</Text></View>
-            <View style={styles.col}>
-                <Text style={styles.text}>
-                    {rowData.minPulse}/{rowData.avgPulse}/{rowData.maxPulse}
-                </Text>
-            </View>
-
             <View style={styles.col}><Text style={styles.text}>{rowData.time}</Text></View>
 
 

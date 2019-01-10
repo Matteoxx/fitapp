@@ -19,30 +19,21 @@ export default class Result extends Component{
        
         
         this.state = {
-            minPulse: '',
-            maxPulse: '',
-            avgPulse: '',
+      
             training: this.props.result
         }
     
     }
 
     addTrainingToDatabase(){
-
-        minPulse= _.min(this.state.training.pulse);
-        maxPulse= _.max(this.state.training.pulse);
-        avgPulse= _.round(_.mean(this.state.training.pulse));
    
         db.transaction((tx) => {
     
-            let query = `INSERT INTO trainings (date, distance, calories, minPulse, maxPulse, avgPulse, time) 
+            let query = `INSERT INTO trainings (date, distance, calories, time) 
                         VALUES (
                             '${this.state.training.date}',
                             '${this.state.training.distance}',
                             '${this.state.training.calories}',
-                            '${minPulse}',
-                            '${maxPulse}',
-                            '${avgPulse}',
                             '${this.state.training.time}')`;
     
             db.executeSql(query);
@@ -79,10 +70,6 @@ export default class Result extends Component{
                     <Text style={styles.resultTextDate}>{this.state.training.date}</Text>
                     <Text style={styles.resultText}>Calories: {this.state.training.calories}</Text>
                     <Text style={styles.resultText}>Distance: {this.state.training.distance} m </Text>
-                    <Text style={styles.resultText}>
-                        Min/Avg/Max Pulse: {_.min(this.state.training.pulse)}/{_.round(_.mean(this.state.training.pulse))}/{_.max(this.state.training.pulse)}
-                    </Text>
-          
                     <Text style={styles.resultText}>Time: {this.state.training.time} s</Text>
                     
 

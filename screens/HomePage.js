@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-import SQLite from 'react-native-sqlite-storage';
 import SplashScreen from 'react-native-splash-screen';
 import LinearGradient from 'react-native-linear-gradient';
 
 
-export default class App extends Component {
+export default class HomePage extends Component {
 
     constructor() {
         super();
@@ -37,30 +36,35 @@ export default class App extends Component {
             }
         })
     }
-
+    
     render() {
-    return (
-    // <LinearGradient colors={['#A6fcd2','#Afd5f6']} style={styles.linearGradient}>
-    <LinearGradient colors={['#4facfe','#00f2fe']} style={styles.linearGradient}>
+        return (
+
+            <LinearGradient colors={['#4facfe','#00f2fe']} style={styles.linearGradient}>
 
 
-      <View style={styles.container}>
+                <View style={styles.container}>
 
-          <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('TrainingHistory')}>
-              <Text style={styles.btnTxt}>Historia Treningowa</Text>
-          </TouchableOpacity>
-          <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('TrainingStart')}>
-              <Text style={styles.btnTxt}>Trening</Text>
-          </TouchableOpacity>
-          <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('CalculatorBMI')}>
-              <Text style={styles.btnTxt}>Liczenie BMI</Text>
-          </TouchableOpacity>
+                    <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('TrainingHistory')}>
+                        <Text style={styles.btnTxt}>Historia Treningowa</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('TrainingStart')}>
+                        <Text style={styles.btnTxt}>Trening</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('CalculatorBMI')}>
+                        <Text style={styles.btnTxt}>Liczenie BMI</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('CheckPulse')}>
+                        <Text style={styles.btnTxt}>Sprawdź puls</Text>
+                    </TouchableOpacity>
 
-        </View>
+                </View>
 
-      </LinearGradient>
-    );
-  }
+            </LinearGradient>
+
+        );
+    }
+  
 }
 
 const styles = StyleSheet.create({

@@ -10,17 +10,14 @@ export default class Training extends Component{
     
 
         //tutaj trzeba wprowadzic odczyty
-        //odczyty pulsu do tablicy a pozniej to juz wyliczy min,max i sredni
         this.state = {
            
             result: {
                 date: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
                 distance: '6000',
                 calories: '1500',
-                pulse: [100,120,115,168,140,145],
                 time: '4000'
-            },
-            currentPulse: '110'
+            }
         }
     
     }
@@ -54,7 +51,6 @@ export default class Training extends Component{
                     <Text style={styles.resultText}>Time: {this.state.result.time}</Text>
                     <Text style={styles.resultText}>Distance: {this.state.result.distance}</Text>
                     <Text style={styles.resultText}>Calories: {this.state.result.calories}</Text>
-                    <Text style={styles.resultText}>Pulse: {this.state.currentPulse}</Text>
                     
                     <TouchableOpacity style={styles.saveBtn} onPress={()=> this.goToScreen('Result', this.state.result)}>
                         <Text style={styles.saveBtnTxt}>Finish Training</Text>
