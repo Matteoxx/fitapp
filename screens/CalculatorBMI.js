@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableOpacity,TextInput} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity,TextInput} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import LinearGradient from 'react-native-linear-gradient';
+import _ from 'lodash';
 
 export default class CalculatorBMI extends Component{
-    calcBMI = 0;
+
     constructor (props){
         super(props);
         this.state = {
-            waga: '',
-            wzrost: ''
+            weight: '',
+            height: '',
+            bmiResult: '',
+            bmiDesc: ''
         };
     }
     goToScreen = (screenName) => {
@@ -23,41 +26,45 @@ export default class CalculatorBMI extends Component{
                         }
                     }
                 }
-            },
-            passProps:{
-                calcBMI: this.calcBMI
             }
         })
     }
 
-    calculationBMI(weight, height){
-        weight = this.state.waga;
-        height = this.state.wzrost;
-        this.calcBMI = weight/(height*height);
-        this.calcBMI = this.calcBMI * 10000;
-        this.calcBMI = this.calcBMI.toFixed(2);
-        return this.calcBMI;
+    calculateBMI(weight, height){
+
+        if(weight === '' || height === ''){
+            alert('Wprowadź wszystkie dane!');
+        } else {
+
+            calcBMI = _.round((weight/(height*height))* 10000, 2);
+
+            if(calcBMI < 16){
+                calcDesc = 'wygłodzenie';
+            }else if (calcBMI <= 16.99 && calcBMI >= 16){
+                calcDesc = 'wychudzenie';
+            }else if (calcBMI <= 18.49 && calcBMI >= 17){
+                calcDesc = 'niedowaga';
+            }else if (calcBMI <= 24.49 && calcBMI >= 18.5){
+                calcDesc = 'wartość prawidłowa';
+            }else if (calcBMI <= 29.99 && calcBMI >= 25){
+                calcDesc = 'nadwaga';
+            }else if (calcBMI <= 34.99 && calcBMI >= 30){
+                calcDesc = 'I stopień otyłości';
+            }else if (calcBMI <= 39.99 && calcBMI >= 35){
+                calcDesc = 'II stopień otyłości';
+            }else if ( calcBMI >= 40){
+                calcDesc = 'otyłość skrajna';
+            }
+    
+            this.setState({
+                bmiResult: calcBMI,
+                bmiDesc: calcDesc
+            })
+        }
+
     }
 
-    checkYourBMI(){
-        if(this.calcBMI < 16){
-            return 'wygłodzenie';
-        }else if (this.calcBMI <= 16.99 && this.calcBMI >= 16){
-            return 'wychudzenie';
-        }else if (this.calcBMI <= 18.49 && this.calcBMI >= 17){
-            return 'niedowaga';
-        }else if (this.calcBMI <= 24.49 && this.calcBMI >= 18.5){
-            return 'wartość prawidłowa';
-        }else if (this.calcBMI <= 29.99 && this.calcBMI >= 25){
-            return 'nadwaga';
-        }else if (this.calcBMI <= 34.99 && this.calcBMI >= 30){
-            return 'I stopień otyłości';
-        }else if (this.calcBMI <= 39.99 && this.calcBMI >= 35){
-            return 'II stopień otyłości';
-        }else if ( this.calcBMI >= 40){
-            return 'otyłość skrajna';
-        }
-    }
+
     render() {
         return (
             <LinearGradient colors={['#4facfe','#00f2fe']} style={styles.linearGradient}>
@@ -68,21 +75,21 @@ export default class CalculatorBMI extends Component{
 
                     <TextInput style={styles.textInput} placeholder="Wprowadź swoją wagę [kg]"
                                onChangeText={(text) => this.setState({
-                                   waga: text
+                                weight: text
                                })}
                     />
                     <TextInput style={styles.textInput} placeholder="Wprowadź swój wzrost [cm]"
                                onChangeText={(text) => this.setState({
-                                   wzrost: text
+                                height: text
                                })}
                     />
-                    <TouchableOpacity style={styles.saveBtn} onPress={()=>this.calculationBMI()}>
+                    <TouchableOpacity style={styles.saveBtn} onPress={()=>this.calculateBMI(this.state.weight, this.state.height)}>
                         <Text style={styles.saveBtnTxt } > Oblicz </Text>
                     </TouchableOpacity>
 
                     <Text style={styles.normalTxt}> Twoje BMI wynosi:</Text>
-                    <Text style={styles.calcTxt}> {this.calculationBMI(this.calcBMI)}</Text>
-                    <Text style={styles.calcTxt}> {this.checkYourBMI()}</Text>
+                    <Text style={styles.calcTxt}> {this.state.bmiResult}</Text>
+                    <Text style={styles.calcTxt}> {this.state.bmiDesc}</Text>
 
                 
                 </View>
