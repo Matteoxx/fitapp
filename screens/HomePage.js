@@ -54,9 +54,6 @@ export default class HomePage extends Component {
                     <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('CalculatorBMI')}>
                         <Text style={styles.btnTxt}>Liczenie BMI</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity  style={styles.btn} onPress={()=> this.goToScreen('CheckPulse')}>
-                        <Text style={styles.btnTxt}>Sprawdź puls</Text>
-                    </TouchableOpacity>
 
                 </View>
 
